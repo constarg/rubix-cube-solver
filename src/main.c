@@ -15,7 +15,6 @@ struct cube_face
     short int *top_face;
     short int *bottom_face;
     short int *back_face;
-    char color[10];
 };
 
 struct rubix_cube 
