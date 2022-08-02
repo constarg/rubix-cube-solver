@@ -20,115 +20,191 @@ struct cube_face
 
 struct rubix_cube 
 {
-    struct cube_face f_red;
-    struct cube_face f_white;
-    struct cube_face f_blue;
-    struct cube_face f_yellow;
-    struct cube_face f_green;
-    struct cube_face f_orange;
+    struct cube_face cf_front;
+    struct cube_face cf_red;
+    struct cube_face cf_white;
+    struct cube_face cf_blue;
+    struct cube_face cf_yellow;
+    struct cube_face cf_green;
+    struct cube_face cf_orange;
 };
 
-// make each face initial value.
-short int v_red_face[] = {
-    RED, RED, RED,
-    RED, RED, RED,
-    RED, RED, RED
-};
+static struct rubix_cube g_cube; // global cube.
 
-short int v_white_face[] = {
-    WHITE, WHITE, WHITE,
-    WHITE, WHITE, WHITE,
-    WHITE, WHITE, WHITE
-};
+// rotate left front face.
+static void r_left_f_face()
+{
 
-short int v_blue_face[] = {
-    BLUE, BLUE, BLUE,
-    BLUE, BLUE, BLUE,
-    BLUE, BLUE, BLUE
-};
 
-short int v_yellow_face[] = {
-    YELLOW, YELLOW, YELLOW,
-    YELLOW, YELLOW, YELLOW,
-    YELLOW, YELLOW, YELLOW
-};
+}
 
-short int v_green_face[] = {
-    GREEN, GREEN, GREEN,
-    GREEN, GREEN, GREEN,
-    GREEN, GREEN, GREEN
-};
-
-short int v_orange_face[] = {
-    ORANGE, ORANGE, ORANGE,
-    ORANGE, ORANGE, ORANGE,
-    ORANGE, ORANGE, ORANGE
-};
-
-static void r_up_f_face()
+// rotate right front face.
+static void r_right_f_face()
 {
 
 }
 
-static void r_down_f_face()
+// rotate left back face.
+static void r_left_b_face()
 {
 
 }
 
+// rotate right back face.
+static void r_right_b_face()
+{
 
-// TODO - do all the rotations.
-static void suffle_cute(const struct rubix_cube *cube)
+}
+
+// rotate left up face.
+static void r_left_u_face()
+{
+
+}
+
+// rotate right up face.
+static void r_right_u_face()
+{
+
+}
+
+// rotate left down face.
+static void r_left_d_face()
+{
+
+}
+
+// rotate right down face.
+static void r_right_d_face()
+{
+
+}
+
+// move up left column.
+static void m_up_left_column()
+{
+
+}
+
+// move down left column.
+static void m_down_left_column()
+{
+
+}
+
+// move up right column.
+static void m_up_right_column()
+{
+
+}
+
+// move down right column.
+static void m_down_right_column()
+{
+
+}
+
+// TODO - make a few random moves to suffle the virtual cube. 
+static void suffle_cube()
+{
+
+}
+
+static void solve_cube()
 {
 
 }
 
 int main(int argc, char *argv[])
 {
-    // configure cube.
-    struct rubix_cube cube;
+    // make each face initial value.
+    short int v_red_face[] = {
+        RED, RED, RED,
+        RED, RED, RED,
+        RED, RED, RED
+    };
+
+    short int v_white_face[] = {
+        WHITE, WHITE, WHITE,
+        WHITE, WHITE, WHITE,
+        WHITE, WHITE, WHITE
+    };
+
+    short int v_blue_face[] = {
+        BLUE, BLUE, BLUE,
+        BLUE, BLUE, BLUE,
+        BLUE, BLUE, BLUE
+    };
+
+    short int v_yellow_face[] = {
+        YELLOW, YELLOW, YELLOW,
+        YELLOW, YELLOW, YELLOW,
+        YELLOW, YELLOW, YELLOW
+    };
+
+    short int v_green_face[] = {
+        GREEN, GREEN, GREEN,
+        GREEN, GREEN, GREEN,
+        GREEN, GREEN, GREEN
+    };
+
+    short int v_orange_face[] = {
+        ORANGE, ORANGE, ORANGE,
+        ORANGE, ORANGE, ORANGE,
+        ORANGE, ORANGE, ORANGE
+    };
+
 
     // configure cube faces.
-    cube.f_red.face    = v_red_face;
-    cube.f_white.face  = v_white_face;
-    cube.f_blue.face   = v_blue_face;
-    cube.f_yellow.face = v_yellow_face;
-    cube.f_green.face  = v_green_face;
-    cube.f_orange.face = v_orange_face;
+    g_cube.cf_red.face           = v_red_face;
+    g_cube.cf_white.face         = v_white_face;
+    g_cube.cf_blue.face          = v_blue_face;
+    g_cube.cf_yellow.face        = v_yellow_face;
+    g_cube.cf_green.face         = v_green_face;
+    g_cube.cf_orange.face        = v_orange_face;
     // configure right, left, bottom and top faces.
     // red face.
-    cube.f_red.left_face   = v_blue_face;
-    cube.f_red.right_face  = v_green_face;
-    cube.f_red.top_face    = v_yellow_face;
-    cube.f_red.bottom_face = v_white_face;
-    cube.f_red.back_face   = v_orange_face;
+    g_cube.cf_red.left_face      = v_blue_face;
+    g_cube.cf_red.right_face     = v_green_face;
+    g_cube.cf_red.top_face       = v_yellow_face;
+    g_cube.cf_red.bottom_face    = v_white_face;
+    g_cube.cf_red.back_face      = v_orange_face;
     // white face.
-    cube.f_white.left_face   = v_blue_face;
-    cube.f_white.right_face  = v_green_face;
-    cube.f_white.top_face    = v_red_face;
-    cube.f_white.bottom_face = v_orange_face;
-    cube.f_white.back_face   = v_yellow_face;
+    g_cube.cf_white.left_face    = v_blue_face;
+    g_cube.cf_white.right_face   = v_green_face;
+    g_cube.cf_white.top_face     = v_red_face;
+    g_cube.cf_white.bottom_face  = v_orange_face;
+    g_cube.cf_white.back_face    = v_yellow_face;
     // blue face.
-    cube.f_blue.left_face   = v_orange_face;
-    cube.f_blue.right_face  = v_red_face;
-    cube.f_blue.top_face    = v_yellow_face;
-    cube.f_blue.bottom_face = v_white_face;
-    cube.f_blue.back_face   = v_green_face;
+    g_cube.cf_blue.left_face     = v_orange_face;
+    g_cube.cf_blue.right_face    = v_red_face;
+    g_cube.cf_blue.top_face      = v_yellow_face;
+    g_cube.cf_blue.bottom_face   = v_white_face;
+    g_cube.cf_blue.back_face     = v_green_face;
     // yellow face.
-    cube.f_yellow.left_face   = v_blue_face;
-    cube.f_yellow.right_face  = v_green_face;
-    cube.f_yellow.top_face    = v_orange_face;
-    cube.f_yellow.bottom_face = v_red_face;
-    cube.f_yellow.back_face   = v_white_face;
+    g_cube.cf_yellow.left_face   = v_blue_face;
+    g_cube.cf_yellow.right_face  = v_green_face;
+    g_cube.cf_yellow.top_face    = v_orange_face;
+    g_cube.cf_yellow.bottom_face = v_red_face;
+    g_cube.cf_yellow.back_face   = v_white_face;
     // green face.
-    cube.f_green.left_face   = v_red_face;
-    cube.f_green.right_face  = v_orange_face;
-    cube.f_green.top_face    = v_yellow_face;
-    cube.f_green.bottom_face = v_white_face;
-    cube.f_green.back_face   = v_blue_face;
+    g_cube.cf_green.left_face    = v_red_face;
+    g_cube.cf_green.right_face   = v_orange_face;
+    g_cube.cf_green.top_face     = v_yellow_face;
+    g_cube.cf_green.bottom_face  = v_white_face;
+    g_cube.cf_green.back_face    = v_blue_face;
     // orange face.
-    cube.f_orange.left_face   = v_green_face;
-    cube.f_orange.right_face  = v_blue_face;
-    cube.f_orange.top_face    = v_yellow_face;
-    cube.f_orange.bottom_face = v_white_face;
-    cube.f_orange.back_face   = v_red_face;
+    g_cube.cf_orange.left_face   = v_green_face;
+    g_cube.cf_orange.right_face  = v_blue_face;
+    g_cube.cf_orange.top_face    = v_yellow_face;
+    g_cube.cf_orange.bottom_face = v_white_face;
+    g_cube.cf_orange.back_face   = v_red_face;
+    // initial front face.
+    g_cube.cf_front              = g_cube.cf_white;
+
+    // suffle cube.
+    suffle_cube();
+
+    // solve cube.
+    solve_cube();
 }
