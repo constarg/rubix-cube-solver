@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <memory.h>
 
 #define RED    1 
 #define WHITE  2
@@ -9,12 +10,13 @@
 
 struct cube_face
 {
-    short int *face;
-    short int *right_face;
-    short int *left_face;
-    short int *top_face;
-    short int *bottom_face;
-    short int *back_face;
+    short int (*face)[3];
+    short int (*right_face)[3];
+    short int (*left_face)[3];
+    short int (*top_face)[3];
+    short int (*bottom_face)[3];
+    short int (*back_face)[3];
+    short int offset;
 };
 
 struct rubix_cube 
@@ -30,10 +32,10 @@ struct rubix_cube
 
 static struct rubix_cube g_cube; // global cube.
 
+
 // rotate left front face.
 static void r_left_f_face()
 {
-
 
 }
 
@@ -117,40 +119,40 @@ static void solve_cube()
 int main(int argc, char *argv[])
 {
     // make each face initial value.
-    short int v_red_face[] = {
-        RED, RED, RED,
-        RED, RED, RED,
-        RED, RED, RED
+    short int v_red_face[3][3] = {
+        {RED, RED, RED},
+        {RED, RED, RED},
+        {RED, RED, RED}
     };
 
-    short int v_white_face[] = {
-        WHITE, WHITE, WHITE,
-        WHITE, WHITE, WHITE,
-        WHITE, WHITE, WHITE
+    short int v_white_face[3][3] = {
+        {WHITE, WHITE, WHITE},
+        {WHITE, WHITE, WHITE},
+        {WHITE, WHITE, WHITE}
     };
 
-    short int v_blue_face[] = {
-        BLUE, BLUE, BLUE,
-        BLUE, BLUE, BLUE,
-        BLUE, BLUE, BLUE
+    short int v_blue_face[3][3] = {
+        {BLUE, BLUE, BLUE},
+        {BLUE, BLUE, BLUE},
+        {BLUE, BLUE, BLUE}
     };
 
-    short int v_yellow_face[] = {
-        YELLOW, YELLOW, YELLOW,
-        YELLOW, YELLOW, YELLOW,
-        YELLOW, YELLOW, YELLOW
+    short int v_yellow_face[3][3] = {
+        {YELLOW, YELLOW, YELLOW},
+        {YELLOW, YELLOW, YELLOW},
+        {YELLOW, YELLOW, YELLOW}
     };
 
-    short int v_green_face[] = {
-        GREEN, GREEN, GREEN,
-        GREEN, GREEN, GREEN,
-        GREEN, GREEN, GREEN
+    short int v_green_face[3][3] = {
+        {GREEN, GREEN, GREEN},
+        {GREEN, GREEN, GREEN},
+        {GREEN, GREEN, GREEN}
     };
 
-    short int v_orange_face[] = {
-        ORANGE, ORANGE, ORANGE,
-        ORANGE, ORANGE, ORANGE,
-        ORANGE, ORANGE, ORANGE
+    short int v_orange_face[3][3] = {
+        {ORANGE, ORANGE, ORANGE},
+        {ORANGE, ORANGE, ORANGE},
+        {ORANGE, ORANGE, ORANGE}
     };
 
 
